@@ -1,0 +1,23 @@
+<p>
+  shopping-list works!
+</p>
+
+
+<div>
+  <label>New Ingredient</label> <input #ingredient />
+  <label>Quantity</label> <input #quantity />
+  <button (click)="addIngredient(ingredient.value, quantity.value)">
+    Add
+  </button>
+</div>
+
+<div class="container">
+	<ul>
+		<div *ngIf="shoppingList">
+			<li class="row" *ngFor="let ingredient of shoppingList.ingredients">
+				{{ingredient.name}}
+				{{ingredient.quantity}}
+			</li>
+		</div>
+	</ul>
+</div>

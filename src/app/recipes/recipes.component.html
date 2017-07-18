@@ -1,0 +1,29 @@
+<p>
+  recipes works!
+</p>
+
+<div>
+  <label>Pinterest URL:</label> <input #pinterestURL />
+
+  <button (click)="addRecipe(pinterestURL.value)">
+    Add
+  </button>
+</div>
+
+<div class="container">
+	<ul>
+		<li class="row" *ngFor="let recipe of recipes, let i = index " (click)="onSelect(recipe)"  
+		[class.selected]="recipe === selectedRecipe">
+	    	{{ recipe.name }}
+		
+			<div *ngIf="selectedRecipe == recipe">
+				<div *ngFor="let ingredient of this.selectedRecipe.ingredients">
+					{{ ingredient.name }}
+					{{ ingredient.quantity }}
+				</div>
+				<button (click)="addIngredientsToShoppingList(this.selectedRecipe.ingredients)"> + Shopping List</button>
+				<button>Add to Calender</button>
+			</div>
+		</li>
+	</ul>
+</div>
